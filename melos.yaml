@@ -1,0 +1,15 @@
+name: my_flutter_showcase
+
+sdkPath: .fvm/flutter_sdk
+
+packages:
+  - packages/app
+
+command:
+  bootstrap:
+    usePubspecOverrides: true
+
+scripts:
+  generate:
+    run: melos exec -c 1 --depends-on="build_runner" --flutter -- "fvm dart run build_runner build --delete-conflicting-outputs"
+    description: run build_runner for all packages
