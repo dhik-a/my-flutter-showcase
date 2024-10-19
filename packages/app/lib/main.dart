@@ -1,7 +1,9 @@
 import 'package:app/app.dart';
+import 'package:app/injector.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MyApp(title: "My Flutter Showcase",));
+  configureDependencies();
+  runApp(MyApp(title: "My Flutter Showcase",),);
 }
