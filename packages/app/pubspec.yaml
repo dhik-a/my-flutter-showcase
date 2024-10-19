@@ -13,6 +13,8 @@ dependencies:
     path: ../common
   feature_dashboard:
     path: ../feature/feature_dashboard
+  feature_profile:
+    path: ../feature/feature_profile
 
   get_it: ^8.0.0
   auto_route: ^9.2.2

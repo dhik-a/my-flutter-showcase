@@ -6,6 +6,7 @@ packages:
   - packages/app
   - packages/common
   - packages/feature/feature_dashboard
+  - packages/feature/feature_profile
 
 command:
   bootstrap:

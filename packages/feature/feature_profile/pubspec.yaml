@@ -1,5 +1,5 @@
-name: feature_dashboard
-description: "Central hub to showcase available features."
+name: feature_profile
+description: "Feature to insert, update and view user profile data."
 version: 0.0.1
 publish_to: none
 
@@ -12,16 +12,14 @@ dependencies:
     sdk: flutter
   common:
     path: ../../common
-  feature_profile:
-    path: ../../feature/feature_profile
-
   auto_route: ^9.2.2
   get_it: ^8.0.0
   injectable: ^2.5.0
 
 dev_dependencies:
-  auto_route_generator: ^9.0.0
-  build_runner: ^2.4.13
   flutter_test:
     sdk: flutter
+  flutter_lints: ^4.0.0
+  auto_route_generator: ^9.0.0
+  build_runner: ^2.4.13
   injectable_generator: ^2.6.2
