@@ -19,10 +19,7 @@ class DashboardPage extends StatelessWidget {
           spacing: 8,
           children: [
             FilledButton(
-              onPressed: () {
-                print("Click Profile");
-                context.router.pushNamed(profileRouteName);
-              },
+              onPressed: () => context.router.pushNamed(profileRouteName),
               child: const Text("Profile"),
             ),
           ],
