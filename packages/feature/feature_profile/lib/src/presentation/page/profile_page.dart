@@ -1,4 +1,7 @@
 import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:common/common.dart';
+import 'package:feature_profile/src/config/feature_profile_route.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -20,7 +23,7 @@ class ProfilePage extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () => context.router.pushNamed(profileInputRouteName),
             icon: const Icon(
               Icons.edit,
               color: Colors.white,
@@ -83,16 +86,14 @@ class ProfilePage extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               const Divider(),
-              const SizedBox(height: 8),
+              _descriptionRow(
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin facilisis libero at ipsum pharetra, et suscipit mauris iaculis. Integer euismod nulla nec orci viverra, at malesuada augue fermentum.'),
+              const Divider(),
               _dataRow('Location', 'Jakarta, Indonesia'),
-              const SizedBox(height: 8),
+              _dataRow('Email', 'you@gmail.com'),
+              _dataRow('Phone', '+628961234589'),
               _dataRow('Birth Date', '31 April 1990'),
-              const SizedBox(height: 8),
               _dataRow('Status', 'Employed'),
-              const SizedBox(height: 8),
-              _dataRow('Description',
-                  'ksdmalskdlanskd n lkna lkansd lansdl aslk nal dnkasm dln'),
-              const SizedBox(height: 8),
               const Divider(),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -137,22 +138,21 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _dataRow(String label, String value) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Expanded(
-          child: Text(
-            label,
-            style: const TextStyle(
-              fontSize: 14,
+  Widget _descriptionRow(String value) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'Description',
+            style: TextStyle(
               fontWeight: FontWeight.bold,
             ),
           ),
-        ),
-        Expanded(
-          child: Text(
+          const SizedBox(height: 4),
+          Text(
             value,
             maxLines: 4,
             overflow: TextOverflow.ellipsis,
@@ -160,8 +160,39 @@ class ProfilePage extends StatelessWidget {
               fontSize: 14,
             ),
           ),
-        ),
-      ],
+        ],
+      ),
+    );
+  }
+
+  Widget _dataRow(String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            child: Text(
+              label,
+              style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Expanded(
+            child: Text(
+              value,
+              maxLines: 4,
+              overflow: TextOverflow.ellipsis,
+              style: const TextStyle(
+                fontSize: 14,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
