@@ -4,6 +4,7 @@ class TextInput extends StatelessWidget {
   final String label;
   final String value;
   final String hint;
+  final String error;
   final int maxLines;
 
   const TextInput({
@@ -11,6 +12,7 @@ class TextInput extends StatelessWidget {
     this.label = '',
     this.value = '',
     this.hint = '',
+    this.error = '',
     this.maxLines = 1,
   });
 
@@ -47,6 +49,12 @@ class TextInput extends StatelessWidget {
             hintText: hint,
             hintStyle: const TextStyle(
               color: Colors.grey,
+            ),
+            error: Text(
+              error,
+              style: const TextStyle(
+                color: Colors.red,
+              ),
             ),
           ),
           maxLines: maxLines,

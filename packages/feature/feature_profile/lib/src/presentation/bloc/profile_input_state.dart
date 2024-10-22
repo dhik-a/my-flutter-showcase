@@ -16,7 +16,11 @@ class ProfileInputState with _$ProfileInputState {
 
 @freezed
 abstract class ProfileInputPageState with _$ProfileInputPageState {
-  const factory ProfileInputPageState.idle() = ProfileInputIdlePageState;
+  const factory ProfileInputPageState.idle() = PageIdleState;
 
-  const factory ProfileInputPageState.loading() = ProfileInputLoadingPageState;
+  const factory ProfileInputPageState.loading() = PageLoadingState;
+
+  const factory ProfileInputPageState.done() = PageDoneState;
+
+  const factory ProfileInputPageState.error() = PageErrorState;
 }

@@ -12,7 +12,7 @@ class Profile with _$Profile {
     @Default('') String country,
     @Default('') String city,
     @Default('') String email,
-    @Default(0) int phone,
+    @Default('') String phone,
     @Default([]) List<String> skills,
   }) = _Profile;
 }
