@@ -2,6 +2,10 @@ part of 'profile_input_bloc.dart';
 
 @freezed
 abstract class ProfileInputEvent with _$ProfileInputEvent {
+  const factory ProfileInputEvent.init({
+    required ProfileInputState state,
+  }) = _InitEvent;
+
   const factory ProfileInputEvent.setFullName({
     @Default('') String value,
   }) = _SetFullNameEvent;
