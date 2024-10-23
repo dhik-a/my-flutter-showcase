@@ -3,6 +3,7 @@ import 'package:feature_profile/src/domain/use_case/save_profile.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:intl/intl.dart';
 
 part 'profile_input_bloc.freezed.dart';
 
@@ -21,6 +22,7 @@ class ProfileInputBloc extends Bloc<ProfileInputEvent, ProfileInputState> {
     on<_SetFullNameEvent>(_onSetFullName);
     on<_SetTitleEvent>(_onSetTitle);
     on<_SetDescriptionEvent>(_onSetDescription);
+    on<_SetBirthDateEvent>(_onSetBirthDate);
     on<_SetCountryEvent>(_onSetCountry);
     on<_SetCityEvent>(_onSetCity);
     on<_SetEmailEvent>(_onSetEmail);
@@ -28,42 +30,78 @@ class ProfileInputBloc extends Bloc<ProfileInputEvent, ProfileInputState> {
     on<_SubmitEvent>(_onSubmit);
   }
 
-  void _onInit(_InitEvent event, Emitter<ProfileInputState> emit) {
-    emit(event.state); // Load the initial state provided.
+  Future<void> _onInit(
+    _InitEvent event,
+    Emitter<ProfileInputState> emit,
+  ) async {
+    emit(event.state); // Load the initial state provided
   }
 
-  void _onSetFullName(
-      _SetFullNameEvent event, Emitter<ProfileInputState> emit) {
+  Future<void> _onSetFullName(
+    _SetFullNameEvent event,
+    Emitter<ProfileInputState> emit,
+  ) async {
     emit(state.copyWith(fullName: event.value));
   }
 
-  void _onSetTitle(_SetTitleEvent event, Emitter<ProfileInputState> emit) {
+  Future<void> _onSetTitle(
+    _SetTitleEvent event,
+    Emitter<ProfileInputState> emit,
+  ) async {
     emit(state.copyWith(title: event.value));
   }
 
-  void _onSetDescription(
-      _SetDescriptionEvent event, Emitter<ProfileInputState> emit) {
+  Future<void> _onSetDescription(
+    _SetDescriptionEvent event,
+    Emitter<ProfileInputState> emit,
+  ) async {
     emit(state.copyWith(description: event.value));
   }
 
-  void _onSetCountry(_SetCountryEvent event, Emitter<ProfileInputState> emit) {
+  Future<void> _onSetCountry(
+    _SetCountryEvent event,
+    Emitter<ProfileInputState> emit,
+  ) async {
     emit(state.copyWith(country: event.value));
   }
 
-  void _onSetCity(_SetCityEvent event, Emitter<ProfileInputState> emit) {
+  Future<void> _onSetCity(
+    _SetCityEvent event,
+    Emitter<ProfileInputState> emit,
+  ) async {
     emit(state.copyWith(city: event.value));
   }
 
-  void _onSetEmail(_SetEmailEvent event, Emitter<ProfileInputState> emit) {
+  Future<void> _onSetEmail(
+    _SetEmailEvent event,
+    Emitter<ProfileInputState> emit,
+  ) async {
     emit(state.copyWith(email: event.value));
   }
 
-  void _onSetPhone(_SetPhoneEvent event, Emitter<ProfileInputState> emit) {
+  Future<void> _onSetPhone(
+    _SetPhoneEvent event,
+    Emitter<ProfileInputState> emit,
+  ) async {
     emit(state.copyWith(phone: event.value));
   }
 
+  Future<void> _onSetBirthDate(
+    _SetBirthDateEvent event,
+    Emitter<ProfileInputState> emit,
+  ) async {
+    final strDate = DateFormat('dd-MM-yyyy').format(event.value);
+    emit(
+      state.copyWith(
+        birthDate: strDate,
+      ),
+    ); // Update birth date field
+  }
+
   Future<void> _onSubmit(
-      _SubmitEvent event, Emitter<ProfileInputState> emit) async {
+    _SubmitEvent event,
+    Emitter<ProfileInputState> emit,
+  ) async {
     emit(state.copyWith(pageState: const ProfileInputPageState.loading()));
 
     if (_validateInput()) {

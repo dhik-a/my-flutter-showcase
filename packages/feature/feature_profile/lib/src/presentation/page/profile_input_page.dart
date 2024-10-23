@@ -103,6 +103,7 @@ class _ProfileInputPageState extends State<ProfileInputPage> {
                   ? 'Please fill this field correctly.'
                   : '',
             ),
+            _buildBirthDateInput(context),
             TextInput(
               label: 'Country',
               hint: 'Insert your current country',
@@ -134,6 +135,32 @@ class _ProfileInputPageState extends State<ProfileInputPage> {
           ],
         );
       },
+    );
+  }
+
+  Widget _buildBirthDateInput(BuildContext context) {
+    return GestureDetector(
+      onTap: () async {
+        final result = await showDatePicker(
+          context: context,
+          firstDate: DateTime(1960),
+          lastDate: DateTime.now(),
+        );
+        if (result is DateTime) {
+          _bloc.add(ProfileInputEvent.setBirthDate(value: result));
+        }
+      },
+      child: BlocSelector<ProfileInputBloc, ProfileInputState, String>(
+        selector: (state) => state.birthDate,
+        builder: (context, state) {
+          return TextInput(
+            label: 'Birth Date',
+            hint: 'Insert your current title or position',
+            isEnabled: false,
+            value: state,
+          );
+        },
+      ),
     );
   }
 }

@@ -8,7 +8,7 @@ class Profile with _$Profile {
     @Default('') String fullName,
     @Default('') String title,
     @Default('') String description,
-    @Default(0) int birthDate,
+    @Default('') String birthDate,
     @Default('') String country,
     @Default('') String city,
     @Default('') String email,

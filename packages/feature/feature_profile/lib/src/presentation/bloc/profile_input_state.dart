@@ -6,6 +6,7 @@ class ProfileInputState with _$ProfileInputState {
     @Default('') String fullName,
     @Default('') String title,
     @Default('') String description,
+    @Default('') String birthDate,
     @Default('') String country,
     @Default('') String city,
     @Default('') String email,

@@ -18,6 +18,10 @@ abstract class ProfileInputEvent with _$ProfileInputEvent {
     @Default('') String value,
   }) = _SetDescriptionEvent;
 
+  const factory ProfileInputEvent.setBirthDate({
+    required DateTime value,
+  }) = _SetBirthDateEvent;
+
   const factory ProfileInputEvent.setCountry({
     @Default('') String value,
   }) = _SetCountryEvent;
