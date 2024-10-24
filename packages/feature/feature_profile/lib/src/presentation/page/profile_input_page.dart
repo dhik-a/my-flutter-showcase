@@ -132,6 +132,17 @@ class _ProfileInputPageState extends State<ProfileInputPage> {
                   ? 'Please fill this field correctly.'
                   : '',
             ),
+            FilledButton(
+              onPressed: () => _bloc.add(const ProfileInputEvent.submit()),
+              child: const Text(
+                'Submit',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                ),
+              ),
+            ),
           ],
         );
       },

@@ -90,7 +90,7 @@ class ProfileInputBloc extends Bloc<ProfileInputEvent, ProfileInputState> {
     _SetBirthDateEvent event,
     Emitter<ProfileInputState> emit,
   ) async {
-    final strDate = DateFormat('dd-MM-yyyy').format(event.value);
+    final strDate = DateFormat('dd/MM/yyyy').format(event.value);
     emit(
       state.copyWith(
         birthDate: strDate,
@@ -109,6 +109,7 @@ class ProfileInputBloc extends Bloc<ProfileInputEvent, ProfileInputState> {
         fullName: state.fullName,
         title: state.title,
         description: state.description,
+        birthDate: state.birthDate,
         country: state.country,
         city: state.city,
         email: state.email,
@@ -122,6 +123,7 @@ class ProfileInputBloc extends Bloc<ProfileInputEvent, ProfileInputState> {
         return;
       }
     }
+
     emit(state.copyWith(pageState: const ProfileInputPageState.error()));
   }
 
